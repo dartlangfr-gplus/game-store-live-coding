@@ -25,7 +25,7 @@ Step 1 - Show game data (Dart only)
           game.querySelector("#description").text = "Darts description";
           game.querySelector("#note").text = "★★";
         }
-- Add a click handler to increase the number of stars
+- Add a click handler to increase the number of stars - _`Snippet for the star character`_
 
 		  var note = game.querySelector("#note");
 		  note..text = "★★"
