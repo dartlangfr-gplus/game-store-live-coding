@@ -1,0 +1,4 @@
+name: gamestore_04
+description: A sample application
+dependencies:
+  polymer: any

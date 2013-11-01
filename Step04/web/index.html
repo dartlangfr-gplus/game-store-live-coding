@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Game Store</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    
+    <!-- import the click-counter -->
+    <link rel="import" href="component/games.html">
+    <script type="application/dart" src="packages/polymer/init.dart"></script>
+    <script src="packages/browser/dart.js"></script>
+  </head>
+  <body>
+
+    <!-- Navigation bar -->
+    <header class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <section class="container">
+                <a class="brand" href="#/welcome">Game Store</a>
+                <ul class="nav">
+                    <li><a href="#/games">Buy Games</a></li>
+                </ul>
+                <ul class="nav">
+                    <li><a href="#/mybucket">My Bucket</a></li>
+                </ul>
+                <ul class="nav">
+                    <li><a href="#/mygames">My Games</a></li>
+                </ul>
+            </section>
+        </div>
+    </header>
+    
+    <!-- Main part -->
+    <section class="container" id="container">
+        <h3>Games</h3>
+
+        <x-games></x-games>
+
+
+    </section>
+
+  </body>
+</html>
