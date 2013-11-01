@@ -1,15 +1,21 @@
 import 'dart:html';
 
+// Retrieve DOM elements
+var game = querySelector("#game");
+var image = game.querySelector("#image");
+var title = game.querySelector("#title");
+var genre = game.querySelector("#genre");
+var description = game.querySelector("#description");
+var note = game.querySelector("#note");
+
 void main() {
-  //  Query "Game"
-  var game = querySelector("#game");
-  
   // Populate content
-  game.querySelector("#image").src = "img/games/darts.jpg";
-  game.querySelector("#title").text = "Darts".toUpperCase();
-  game.querySelector("#genre").text = "Pub games";
-  game.querySelector("#description").text = "Darts description";
-  var note = game.querySelector("#note");
+  title.text = "Darts".toUpperCase();
+  genre.text = "Pub games";
+  description.text = "Darts description";
+  image.src = "img/games/darts.jpg";
   note..text = "★★"
-    ..onClick.capture((e) => note.text += "★");
+    ..onClick.capture(increaseNote);
 }
+
+increaseNote(e) => note.text += "★";
