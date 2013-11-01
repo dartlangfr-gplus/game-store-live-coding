@@ -4,21 +4,6 @@
     <title>Game Store</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/app.css">
-    <style type="text/css">
-      .games {
-          text-align : justify;
-        }
-      
-      .game {
-        clear: both;
-      }
-      
-      .game img {
-        float: left;
-        width: 200px;
-        margin: 0 20px 20px 0;
-      }
-    </style>
 </head>
 <body>
     <!-- Navigation bar -->
@@ -27,36 +12,44 @@
             <section class="container">
                 <a class="brand" href="#/welcome">Game Store</a>
                 <ul class="nav">
-                    <li><a href="#/games">Buy Games</a></li>
-                </ul>
-                <ul class="nav">
-                    <li><a href="#/mybucket">My Bucket</a></li>
-                </ul>
-                <ul class="nav">
-                    <li><a href="#/mygames">My Games</a></li>
+                    <li><a href="#/games">Games</a></li>
                 </ul>
             </section>
         </div>
     </header>
     
     <!-- Main part -->
-    <section class="container" id="container">
+    <section class="container">
+    	<!-- Game model -->
+        <h3>Game</h3>
+
+        <div class="game" id="game">
+            <img id="image" src="img/games/darts.jpg" class="span2">
+            <p>
+                <h3 id="title">DARTS</h3>
+                <p><b>Genre:</b> <span id="genre">Pub game</span></p>
+                <p><b>Description:</b> <span id="description">Darts is a form of throwing game in which small missiles are thrown at a circular target (dartboard) fixed to a wall. Though various boards and rules have been used in the past, the term "darts" usually now refers to a standardised game involving a specific board design and set of rules.</span></p>
+                <p><b>Note:</b> <span id="note">&#9733;&#9733;&#9733;</span></p>
+            </p>
+        </div>
+
+		<hr/>
+
+    	<!-- Games model -->
         <h3>Games</h3>
 
-        <div class="games">
+        <div class="games" id="games">
             <div class="game">
                 <img src="img/games/darts.jpg" class="span2">
                 <p>
                     <h3>DARTS
-                        <a class="btn btn-info" on-click="addGame" data="Darts"><i class="icon-inbox icon-white"></i></a>
+                        <a class="btn btn-info"><i class="icon-inbox icon-white"></i></a>
                     </h3>
                     <p><b>Genre:</b> Pub game</p>
                     <p><b>Description:</b> Darts is a form of throwing game in which small missiles are thrown at a circular target (dartboard) fixed to a wall. Though various boards and rules have been used in the past, the term "darts" usually now refers to a standardised game involving a specific board design and set of rules.</p>
                 </p>
             </div>
         </div>
-
-
     </section>
 
 </body>
