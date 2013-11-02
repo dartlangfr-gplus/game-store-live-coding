@@ -1,5 +1,10 @@
-name: test_eclipse
+name: game-store
 description: A sample web application
 dependencies:
   browser: any
   polymer: any
+
+# For 0.8.8
+#transformers:
+#- polymer:
+#    entry_points: web/index.html

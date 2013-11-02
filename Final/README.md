@@ -78,12 +78,12 @@ Step 1 Bis - Show game data (Polymer)
 - In `game.dart`, add a `Game` class  
    _`Snippet`_
 
-        class Game {
-          String name;
-          String genre;
-          String description;
-          String image;
-          int note;
+        class Game extends Object with Observable {
+          @observable String name;
+          @observable String genre;
+          @observable String description;
+          @observable String image;
+          @observable int note;
           
           String toString() => "Game{name: $name}";
         }
