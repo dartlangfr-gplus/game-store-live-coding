@@ -96,6 +96,10 @@ Step 1 Bis - Show game data (Polymer)
           @observable String image;
           @observable int note;
           
+          bool contains(String search) {
+            var pattern = new RegExp(search, caseSensitive: false);
+            return name.contains(pattern) || genre.contains(pattern) || description.contains(pattern);
+          }
           String toString() => "Game{name: $name}";
         }
 - Add a `Game` instance  
@@ -159,3 +163,20 @@ Step 2 - Show games list
 - In `game.dart`, `@published` the game attribute
 
         @published Game game;
+
+Step 3 - Filter and sort on games list
+------
+- In `games.html`, add a search section and add the filter  
+   _`Snippet the search section / Uncomment`_
+ 
+        <section class="well form-inline">
+            <input class="span5" type="text" placeholder="Search" value="{{search}}">
+        </section>
+
+        <template repeat="{{game in games | filterSearch(search)}}">
+- In `games.dart`, add the `search` attribute and the filter function  
+   _`Snippet`_
+
+        @observable String search = "";
+        
+        filterSearch(String search) => (List list) => list.where((e) => e.contains(search));

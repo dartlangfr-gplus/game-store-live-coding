@@ -9,6 +9,10 @@ class Game extends Object with Observable {
   @observable String image;
   @observable int note;
   
+  bool contains(String search) {
+    var pattern = new RegExp(search, caseSensitive: false);
+    return name.contains(pattern) || genre.contains(pattern) || description.contains(pattern);
+  }
   String toString() => "Game{name: $name}";
 }
 
