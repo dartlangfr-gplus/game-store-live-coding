@@ -44,9 +44,18 @@ Step 1 - Show game data (Dart only)
 
 Step 1 Bis - Show game data (Polymer)
 ----------
-- Add polymer package in `pubspec.yaml` (TODO: entryPoints ?)
+- Add polymer package in `pubspec.yaml` and add entry_points  
+   _**`Project skeleton`**_
+
+        dependencies:
+          polymer: any
+        
+        # For 0.8.8
+        transformers:
+        - polymer:
+            entry_points: web/index.html
 - Create a `game.html` web component  
-   _`Snippet / File template`_
+   _**`Project skeleton`**` / File template / Snippet`_
 
         <!DOCTYPE html>
         <polymer-element name="x-game">
@@ -56,7 +65,7 @@ Step 1 Bis - Show game data (Polymer)
           <script type="application/dart" src="game.dart"></script>
         </polymer-element>
 - Create the associated `game.dart`  
-   _`Snippet / File template`_
+   _**`Project skeleton`**` / File template / Snippet`_
 
         import 'dart:html';
         import 'package:polymer/polymer.dart';
@@ -67,16 +76,18 @@ Step 1 Bis - Show game data (Polymer)
 
           bool get applyAuthorStyles => true;
         }
-- In `index.html`, remove index.dart script tag and add
+- In `index.html`, remove index.dart script tag and add  
+   _**`Project skeleton`**_
 
         <link rel="import" href="game.html">
         
         <script type="application/dart">import 'package:polymer/init.dart';</script>
+        <script src="packages/browser/dart.js"></script>
 - Add the new web component
 
         <x-game></x-game>
 - In `game.dart`, add a `Game` class  
-   _`Snippet`_
+   _**`Project skeleton`**` / Snippet`_
 
         class Game extends Object with Observable {
           @observable String name;
@@ -88,7 +99,7 @@ Step 1 Bis - Show game data (Polymer)
           String toString() => "Game{name: $name}";
         }
 - Add a `Game` instance  
-   _`Snippet`_
+   _**`Project skeleton`**` / `Snippet`_
 
         @observable Game game = new Game()
           ..name = "Darts"
@@ -97,7 +108,7 @@ Step 1 Bis - Show game data (Polymer)
           ..image = "darts.jpg"
           ..note = 2;
 - In `game.html`, add the game template  
-   _`Snippet with binding to complete`_
+   _**`Project skeleton`**` / `Snippet with binding to complete`_
 
         <div class="game">
           <img id="image" src="img/games/{{game.image}}" alt="Game picture" class="span2">
