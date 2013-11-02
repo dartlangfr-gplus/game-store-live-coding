@@ -18,6 +18,7 @@ _Live-coding Polymer.dart, pour une appli de gestion de jeux_
 
 Pré-requis live-coding
 ----------------------
+- Précharger les packages pub
 - Avoir des objets Model près ou en snippet
 - Avoir des données en dures de prête
 - Avoir des fichiers JSON en bouchon
