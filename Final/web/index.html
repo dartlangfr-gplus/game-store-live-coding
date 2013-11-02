@@ -5,6 +5,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/app.css">
+
+    <link rel="import" href="game.html">
+    
+    <script type="application/dart">import 'package:polymer/init.dart';</script>
+    <script src="packages/browser/dart.js"></script>
 </head>
 <body>
     <!-- Navigation bar -->
@@ -24,17 +29,9 @@
     	<!-- Game model -->
         <h3>Game</h3>
 
-        <div class="game" id="game">
-            <img id="image" src="img/games/darts.jpg" alt="Game picture" class="span2">
-            <div>
-                <h3 id="title"></h3>
-                <p><b>Genre:</b> <span id="genre"></span></p>
-                <p><b>Description:</b> <span id="description"></span></p>
-                <p><b>Note:</b> <span id="note"></span></p>
-            </div>
-        </div>
+        <x-game></x-game>
 
-		<hr/>
+  		<hr/>
 
     	<!-- Games model -->
         <h3>Games</h3>
@@ -52,9 +49,6 @@
             </div>
         </div>
     </section>
-
-    <script type="application/dart" src="index.dart"></script>
-    <script src="packages/browser/dart.js"></script>
 
 </body>
 </html>

@@ -1,4 +1,8 @@
 packages
 pubspec.lock
-.DS_Store
-out
+*.dart.js
+*.dart.precompiled.js
+*.js_
+*.js.deps
+*.js.map
+

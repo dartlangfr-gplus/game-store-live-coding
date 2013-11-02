@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+<polymer-element name="x-game">
+  <template>
+    <div class="game">
+      <img id="image" src="img/games/{{game.image}}" alt="Game picture" class="span2">
+      <div>
+          <h3>{{game.name | upperCase}}</h3>
+          <p><b>Genre:</b> {{game.genre}}</p>
+          <p><b>Description:</b> {{game.description}}</p>
+          <p><b>Note:</b> <span on-click="{{increaseNote}}">{{game.note | stars}}</span></p>
+      </div>
+     </div>
+  </template>
+  <script type="application/dart" src="game.dart"></script>
+</polymer-element>
