@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/app.css">
 
-    <link rel="import" href="game.html">
+    <link rel="import" href="games.html">
     
     <script type="application/dart">import 'package:polymer/init.dart';</script>
     <script src="packages/browser/dart.js"></script>
@@ -26,28 +26,10 @@
     
     <!-- Main part -->
     <section class="container">
-    	<!-- Game model -->
-        <h3>Game</h3>
-
-        <x-game></x-game>
-
-  		<hr/>
-
     	<!-- Games model -->
-        <h3>Games</h3>
+      <h3>Games</h3>
 
-        <div class="games" id="games">
-            <div class="game">
-                <img src="img/games/darts.jpg" alt="Game picture" class="span2">
-                <div>
-                    <h3>DARTS
-                        <a class="btn btn-info"><i class="icon-inbox icon-white"></i></a>
-                    </h3>
-                    <p><b>Genre:</b> Pub game</p>
-                    <p><b>Description:</b> Darts is a form of throwing game in which small missiles are thrown at a circular target (dartboard) fixed to a wall. Though various boards and rules have been used in the past, the term "darts" usually now refers to a standardised game involving a specific board design and set of rules.</p>
-                </div>
-            </div>
-        </div>
+      <x-games></x-games>
     </section>
 
 </body>

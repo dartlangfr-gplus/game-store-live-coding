@@ -130,3 +130,32 @@ Step 1 Bis - Show game data (Polymer)
 
           increaseNote(Event e, var detail, Node target) => game.note++;
           on-click="{{increaseNote}}"
+          
+Step 2 - Show games list
+------
+- Create a `models.dart` with the `Game` class and some instances  
+   _**`Project skeleton`**_
+- Create a `games.html` and `games.dart` web component   
+   _**`Project skeleton`**` / File template / Snippet`_
+- In `index.html`, add the reference to the new web component
+   _**`Project skeleton`**` / File template / Snippet / Uncomment / Replace`_
+
+        <link rel="import" href="games.html">
+- In `games.html`, import the `x-game` component and use it
+
+        <link rel="import" href="game.html">
+
+        <polymer-element name="x-games">
+          <template>
+            <template repeat="{{game in games}}">
+              <x-game game="{{game}}"></x-game>
+            </template>
+          </template>
+          <script type="application/dart" src="games.dart"></script>
+        </polymer-element>
+- In `games.dart`, add the `games` attributes with models instances
+
+        @observable List games = models.games;
+- In `game.dart`, `@published` the game attribute
+
+        @published Game game;

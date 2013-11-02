@@ -5,7 +5,6 @@ _Live-coding Polymer.dart, pour une appli de gestion de jeux_
 - Afficher les données d’UN jeu (Pure Dart) + Test + Debuggage + Compilation
 - Afficher les données d’UN jeu (Polymer)
 - Afficher la liste de jeux en reprenant le template d’UN jeu
-- Créer un WebComponent affichant UN jeu et l’utiliser dans la liste
 - Filtre / Tri sur la liste de jeux
 - Créer un template alternatif dans la liste de jeux plus compact et faire un bouton pour switcher
 - Créer un service de CRUD sur les jeux (in-memory) et brancher sur les vues

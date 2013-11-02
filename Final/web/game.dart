@@ -1,24 +1,10 @@
 import 'dart:html';
 import 'package:polymer/polymer.dart';
-
-class Game extends Object with Observable {
-  @observable String name;
-  @observable String genre;
-  @observable String description;
-  @observable String image;
-  @observable int note;
-  
-  String toString() => "Game{name: $name}";
-}
+import 'models.dart';
 
 @CustomTag('x-game')
 class XGame extends PolymerElement {
-  @observable Game game = new Game()
-    ..name = "Darts"
-    ..genre = "Pub game"
-    ..description = 'Darts is ...'
-    ..image = "darts.jpg"
-    ..note = 2;
+  @published Game game;
   
   XGame.created() : super.created();
 

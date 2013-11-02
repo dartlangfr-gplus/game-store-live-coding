@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+
+<link rel="import" href="game.html">
+
+<polymer-element name="x-games">
+	<template>
+	  <template repeat="{{game in games}}">
+	    <x-game game="{{game}}"></x-game>
+	  </template>
+	</template>
+  <script type="application/dart" src="games.dart"></script>
+</polymer-element>
