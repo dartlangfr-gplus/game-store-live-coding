@@ -13,5 +13,5 @@ class XGame extends PolymerElement {
   String upperCase(String value) => value.toUpperCase();
   String stars(int count) => new List.generate(count, (i) => "★").join("");
   
-  increaseNote(Event e, var detail, Node target) => game.note++;
+  increaseRating(Event e, var detail, Node target) => game.rating++;
 }

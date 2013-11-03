@@ -22,7 +22,7 @@ Step 1 - Show game data (Dart only)
         var genre = game.querySelector("#genre");
         var description = game.querySelector("#description");
         var image = game.querySelector("#image");
-        var note = game.querySelector("#note");
+        var rating = game.querySelector("#rating");
         
         void main() {
           // Populate content
@@ -30,16 +30,16 @@ Step 1 - Show game data (Dart only)
           genre.text = "Pub game";
           description.text = "Darts is ...";
           image.src = "img/games/darts.jpg";
-          note..text = "★★";
+          rating..text = "★★";
         }
 - Add a click handler to increase the number of stars  
    _`Snippet for the star character`_
 
-          note..text = "★★"
-            ..onClick.capture((e) => note.text += "★");
-- Refactor to `increaseNote`, add a breakpoint and test the debug mode
+          rating..text = "★★"
+            ..onClick.capture((e) => rating.text += "★");
+- Refactor to `increaseRating`, add a breakpoint and test the debug mode
 
-        increaseNote(e) => note.text += "★";
+        increaseRating(e) => rating.text += "★";
 - Try dart2js
 
 Step 1 Bis - Show game data (Polymer)
@@ -94,7 +94,7 @@ Step 1 Bis - Show game data (Polymer)
           @observable String genre;
           @observable String description;
           @observable String image;
-          @observable int note;
+          @observable int rating;
           
           bool contains(String search) {
             var pattern = new RegExp(search, caseSensitive: false);
@@ -110,7 +110,7 @@ Step 1 Bis - Show game data (Polymer)
           ..genre = "Pub game"
           ..description = 'Darts is ...'
           ..image = "darts.jpg"
-          ..note = 2;
+          ..rating = 2;
 - In `game.html`, add the game template  
    _**`Project skeleton`**` / `Snippet with binding to complete`_
 
@@ -120,7 +120,7 @@ Step 1 Bis - Show game data (Polymer)
               <h3>{{game.name}}</h3>
               <p><b>Genre:</b> {{game.genre}}</p>
               <p><b>Description:</b> {{game.description}}</p>
-              <p><b>Note:</b> {{game.note}}</p>
+              <p><b>Rating:</b> {{game.rating}}</p>
           </div>
          </div>
 - In `game.dart`, add filter and use them  
@@ -129,11 +129,11 @@ Step 1 Bis - Show game data (Polymer)
           String upperCase(String value) => value.toUpperCase();
           String stars(int count) => new List.generate(count, (i) => "★").join("");
 
-- Add click handler to increase note  
+- Add click handler to increase rating  
    _`Snippet with the body to complete`_
 
-          increaseNote(Event e, var detail, Node target) => game.note++;
-          on-click="{{increaseNote}}"
+          increaseRating(Event e, var detail, Node target) => game.rating++;
+          on-click="{{increaseRating}}"
           
 Step 2 - Show games list
 ------
@@ -170,7 +170,7 @@ Step 3 - Filter and sort on games list
    _`Snippet the search section / Uncomment`_
  
         <section class="well form-inline">
-            <input class="span5" type="text" placeholder="Search" value="{{search}}">
+            <input type="text" placeholder="Search" value="{{search}}" class="span5">
         </section>
 
         <template repeat="{{game in games | filterSearch(search)}}">

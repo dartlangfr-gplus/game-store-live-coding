@@ -7,7 +7,7 @@ class Game extends Object with Observable {
   @observable String genre;
   @observable String description;
   @observable String image;
-  @observable int note;
+  @observable int rating;
   
   bool contains(String search) {
     var pattern = new RegExp(search, caseSensitive: false);
@@ -17,11 +17,11 @@ class Game extends Object with Observable {
 }
 
 final List<Game> games = [
-  new Game()..name = "Darts"..genre = "Pub game"..description = 'Darts is ...'..image = "darts.jpg"..note = 5,                    
-  new Game()..name = "Chess"..genre = "Board game"..description = 'Chess is ...'..image = "chess.jpg"..note = 4,                    
-  new Game()..name = "Dices"..genre = "Random game"..description = 'Dice are ...'..image = "dice.jpg"..note = 3,                    
-  new Game()..name = "Go"..genre = "Board game"..description = 'Go is ...'..image = "go.jpg"..note = 2,
-  new Game()..name = "Poker"..genre = "Card game"..description = 'Poker is ..'..image="poker.jpg"..note = 4,
-  new Game()..name = "Pool"..genre = "Pub game"..description = 'Pool is ..'..image="pool.jpg"..note = 3,
-  new Game()..name = "Bingo"..genre = "Boring game"..description = 'Bingo is ..'..image="bingo.jpg"..note = 1
+  new Game()..name = "Darts"..genre = "Pub game"..description = 'Darts is ...'..image = "darts.jpg"..rating = 5,                    
+  new Game()..name = "Chess"..genre = "Board game"..description = 'Chess is ...'..image = "chess.jpg"..rating = 4,                    
+  new Game()..name = "Dices"..genre = "Random game"..description = 'Dice are ...'..image = "dice.jpg"..rating = 3,                    
+  new Game()..name = "Go"..genre = "Board game"..description = 'Go is ...'..image = "go.jpg"..rating = 2,
+  new Game()..name = "Poker"..genre = "Card game"..description = 'Poker is ..'..image="poker.jpg"..rating = 4,
+  new Game()..name = "Pool"..genre = "Pub game"..description = 'Pool is ..'..image="pool.jpg"..rating = 3,
+  new Game()..name = "Bingo"..genre = "Boring game"..description = 'Bingo is ..'..image="bingo.jpg"..rating = 1
 ];
