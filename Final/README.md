@@ -18,7 +18,7 @@ Step 1 - Show game data (Dart only)
         
         // Retrieve DOM elements
         var game = querySelector("#game");
-        var title = game.querySelector("#title");
+        var name = game.querySelector("#name");
         var genre = game.querySelector("#genre");
         var description = game.querySelector("#description");
         var image = game.querySelector("#image");
@@ -26,7 +26,7 @@ Step 1 - Show game data (Dart only)
         
         void main() {
           // Populate content
-          title.text = "Darts".toUpperCase();
+          name.text = "Darts".toUpperCase();
           genre.text = "Pub game";
           description.text = "Darts is ...";
           image.src = "img/games/darts.jpg";
@@ -55,17 +55,17 @@ Step 1 Bis - Show game data (Polymer)
         - polymer:
             entry_points: web/index.html
 - Create a `game.html` web component  
-   _**`Project skeleton`**` / File template / Snippet`_
+   _**`Project skeleton`**_
 
         <!DOCTYPE html>
         <polymer-element name="x-game">
           <template>
-            <!-- ... -->
+            <!-- With the copy of the model template -->
           </template>
           <script type="application/dart" src="game.dart"></script>
         </polymer-element>
 - Create the associated `game.dart`  
-   _**`Project skeleton`**` / File template / Snippet`_
+   _**`Project skeleton`**_
 
         import 'dart:html';
         import 'package:polymer/polymer.dart';
@@ -74,10 +74,11 @@ Step 1 Bis - Show game data (Polymer)
         class XGame extends PolymerElement {
           XGame.created() : super.created();
 
+          // Whether styles from the document apply to the contents of the component
           bool get applyAuthorStyles => true;
         }
 - In `index.html`, remove index.dart script tag and add  
-   _**`Project skeleton`**_
+   _**`Project skeleton`**` for the script tags only`_
 
         <link rel="import" href="game.html">
         
@@ -86,8 +87,8 @@ Step 1 Bis - Show game data (Polymer)
 - Add the new web component
 
         <x-game></x-game>
-- In `game.dart`, add a `Game` class  
-   _**`Project skeleton`**` / Snippet`_
+- In `game.dart`, add a `Game` class and `Game` instances  
+   _**`Project skeleton`**_
 
         class Game extends Object with Observable {
           @observable String name;
@@ -102,17 +103,8 @@ Step 1 Bis - Show game data (Polymer)
           }
           String toString() => "Game{name: $name}";
         }
-- Add a `Game` instance  
-   _**`Project skeleton`**` / `Snippet`_
-
-        @observable Game game = new Game()
-          ..name = "Darts"
-          ..genre = "Pub game"
-          ..description = 'Darts is ...'
-          ..image = "darts.jpg"
-          ..rating = 2;
 - In `game.html`, add the game template  
-   _**`Project skeleton`**` / `Snippet with binding to complete`_
+   _**`Project skeleton`**` with binding to complete`_
 
         <div class="game">
           <img id="image" src="img/games/{{game.image}}" alt="Game picture" class="span2">
@@ -123,6 +115,9 @@ Step 1 Bis - Show game data (Polymer)
               <p><b>Rating:</b> {{game.rating}}</p>
           </div>
          </div>
+- In `game.dart`, add a `game` attribute with a `Game` instance  
+
+        @observable Game game = models.games[0];
 - In `game.dart`, add filter and use them  
    _`Snippet`_
 
@@ -140,11 +135,12 @@ Step 2 - Show games list
 - Create a `models.dart` with the `Game` class and some instances  
    _**`Project skeleton`**_
 - Create a `games.html` and `games.dart` web component   
-   _**`Project skeleton`**` / File template / Snippet`_
+   _**`Project skeleton`**` with the copy of the model template`_
 - In `index.html`, add the reference to the new web component
-   _**`Project skeleton`**` / File template / Snippet / Uncomment / Replace`_
 
         <link rel="import" href="games.html">
+        
+        <x-games></x-games>
 - In `games.html`, import the `x-game` component and use it
 
         <link rel="import" href="game.html">
@@ -152,14 +148,16 @@ Step 2 - Show games list
         <polymer-element name="x-games">
           <template>
             <template repeat="{{game in games}}">
-              <x-game game="{{game}}"></x-game>
+              <div class="games">
+                <x-game game="{{game}}"></x-game>
+              </div>
             </template>
           </template>
           <script type="application/dart" src="games.dart"></script>
         </polymer-element>
 - In `games.dart`, add the `games` attributes with models instances
 
-        @observable List games = models.games;
+        @observable Iterable games = models.games;
 - In `game.dart`, `@published` the game attribute
 
         @published Game game;
@@ -167,24 +165,23 @@ Step 2 - Show games list
 Step 3 - Filter and sort on games list
 ------
 - In `games.html`, add a search section and add the filter  
-   _`Snippet the search section / Uncomment`_
+   _**`Project skeleton`**` except for the bindings`_
  
         <section class="well form-inline">
             <input type="text" placeholder="Search" value="{{search}}" class="span5">
         </section>
 
         <template repeat="{{game in games | filterSearch(search)}}">
-- In `games.dart`, add the `search` attribute and the filter function  
-   _`Snippet`_
+- In `games.dart`, add the `search` attribute and the filter function
 
         @observable String search = "";
         
         filterSearch(String search) => (List games) => games.where((e) => e.contains(search));
 - In `games.html`, add sort buttons and add the filter  
-   _`Template / Snippet / Uncomment`_
+   _**`Project skeleton`**` except for the bindings and data-xxx`_
 
         <section class="pull-right">
-            <button class="btn btn-info" on-click="{{sort}}" data-field="name">Sort by title</button>
+            <button class="btn btn-info" on-click="{{sort}}" data-field="name">Sort by name</button>
             <button class="btn btn-info" on-click="{{sort}}" data-field="rating">Sort by rating</button>
         </section>
     
@@ -203,4 +200,44 @@ Step 3 - Filter and sort on games list
           var list = games.toList()..sort(models.getComparator(field));
           return ascending ? list : list.reversed;
         };
+
+Step 4 - Alternative template
+------
+- In `games.html`, create and test the alternative template (copy `stars` method)
+   _**`Project skeleton ?`**` / Snippet`_
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Genre</th>
+                <th>Rating</th>
+            </tr>
+            </thead>
+            <tbody>
+             <template repeat="{{game in games | filterSearch(search) | sortBy(sortField, sortAscending)}}">
+                <tr>
+                    <td>{{game.name}}</td>
+                    <td>{{game.genre}}</td>
+                    <td>{{game.rating | stars}}</td>
+                </tr>
+             </template>
+            </tbody>
+        </table> 
+- In `games.html`, add a switch button and add the switch templates  
+   _`Snippet the class binding`_
+
+        <button class="btn btn-success" on-click="{{compact}}"><i class="{{ {'icon-th-list icon-white' : !isCompact , 'icon-th icon-white' : isCompact } }}"></i></button>
+
+        <template if="{{!isCompact}}">
+           ...
+        </template>
+        <template if="{{isCompact}}">
+           ...
+        </template>
+- In `games.dart`, add the `isCompact` attribute and the `compact` handler  
+
+        @observable bool isCompact = true;
+        
+        compact(Event e, var detail, Element target) => isCompact = !isCompact;  
         

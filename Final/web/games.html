@@ -7,14 +7,38 @@
 		<section class="well form-inline">
 		    <input type="text" placeholder="Search" value="{{search}}" class="span5">
 		    <section class="pull-right">
-		        <!-- <button class="btn btn-success" ng-click="tableView = !tableView"><i ng-class="{'icon-th-list icon-white' : tableView == false , 'icon-th icon-white' : tableView == true }"></i></button> -->
-		        <button class="btn btn-info" on-click="{{sort}}" data-field="name">Sort by title</button>
+		        <button class="btn btn-success" on-click="{{compact}}"><i class="{{ {'icon-th-list icon-white' : !isCompact , 'icon-th icon-white' : isCompact } }}"></i></button>
+		        <button class="btn btn-info" on-click="{{sort}}" data-field="name">Sort by name</button>
 		        <button class="btn btn-info" on-click="{{sort}}" data-field="rating">Sort by rating</button>
 		    </section>
 		</section>
-	  <template repeat="{{game in games | filterSearch(search) | sortBy(sortField, sortAscending)}}">
-	    <x-game game="{{game}}"></x-game>
+		<template if="{{!isCompact}}">
+		  <div class="games">
+			  <template repeat="{{game in games | filterSearch(search) | sortBy(sortField, sortAscending)}}">
+			    <x-game game="{{game}}"></x-game>
+			  </template>
+		  </div>
 	  </template>
+    <template if="{{isCompact}}">
+	    <table class="table table-striped">
+			    <thead>
+			    <tr>
+			        <th>Name</th>
+			        <th>Genre</th>
+			        <th>Rating</th>
+			    </tr>
+			    </thead>
+			    <tbody>
+	         <template repeat="{{game in games | filterSearch(search) | sortBy(sortField, sortAscending)}}">
+					    <tr>
+					        <td>{{game.name}}</td>
+					        <td>{{game.genre}}</td>
+					        <td>{{game.rating | stars}}</td>
+					    </tr>
+	         </template>
+			    </tbody>
+			</table>
+    </template>
 	</template>
   <script type="application/dart" src="games.dart"></script>
 </polymer-element>

@@ -8,10 +8,13 @@ class XGames extends PolymerElement {
   @observable String search = "";
   @observable String sortField = "";
   @observable bool sortAscending = true;
+  @observable bool isCompact = true;
 
   XGames.created() : super.created();
 
   bool get applyAuthorStyles => true;
+  
+  String stars(int count) => new List.generate(count, (i) => "★").join("");
   
   filterSearch(String search) => (Iterable games) => games.where((e) => e.contains(search));
 
@@ -25,4 +28,6 @@ class XGames extends PolymerElement {
     var list = games.toList()..sort(models.getComparator(field));
     return ascending ? list : list.reversed;
   };
+
+  compact(Event e, var detail, Element target) => isCompact = !isCompact;  
 }
