@@ -13,7 +13,7 @@ class XGames extends PolymerElement {
   @observable String search = "";
   @observable String sortField = "";
   @observable bool sortAscending = true;
-  @observable bool isCompact = true;
+  @observable bool isCompact = false;
 
   String stars(int count) => new List.generate(count, (i) => "★").join("");
   

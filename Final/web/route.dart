@@ -1,7 +1,5 @@
-import 'dart:html';
 import 'package:polymer/polymer.dart';
 import 'package:route/client.dart';
-
 
 @CustomTag('x-route')
 class XRoute extends PolymerElement {
@@ -13,22 +11,25 @@ class XRoute extends PolymerElement {
       ..addHandler(gameUrl, _routeHandler(gameUrl))
       ..listen();
     
-    currentUrl = gamesUrl;
+    route = new Route(gamesUrl);
   }
   
   final gamesUrl = new UrlPattern(r'/(.*)#/games');
   final gameUrl = new UrlPattern(r'/(.*)#/games/(\d+)');
 
-  @observable UrlPattern currentUrl;
-  @observable List params = [];
+  @observable Route route;
 
   Handler _routeHandler(UrlPattern url) => (String path) {
     print("Route changed: $url - $path");
-    params = [];
-    currentUrl = url;
-    params = url.parse(path);
+    route = new Route(url, url.parse(path));
   };
   
   int asInt(String value) => int.parse(value);
 }
 
+class Route {
+  final UrlPattern url;
+  final List params;
+  Route(this.url, [this.params = const []]);
+  operator [](int index) => index < params.length ? params[index] : null;
+}
