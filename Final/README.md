@@ -249,3 +249,21 @@ Step 5 - Edit game
         @observable Game game;
 
         var asInt = new GenericTransformer((int v) => v.toString(), (String t) => int.parse(t));
+
+Step 6 - Single page app, URL routing
+------
+- Create a new component `route.html` / `route.dart`    
+   _**`Project skeleton`**` completely for route.dart, without conditional templates but with the components in route.html`_
+- In `index.html`, add the new component
+ 
+        <link rel="import" href="route.html">
+    
+        <x-route></x-route>
+- In `route.html`, add the conditional template and the params
+        
+        <template if="{{currentUrl == gamesUrl}}">
+          <x-games></x-games>
+        </template>
+        <template if="{{currentUrl == gameUrl}}">
+          <x-game-edit gameId="{{params[1] | asInt}}"></x-game-edit>
+        </template>

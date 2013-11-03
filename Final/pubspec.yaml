@@ -1,8 +1,9 @@
-name: game-store
+name: game_store
 description: A sample web application
 dependencies:
   browser: any
   polymer: any
+  route: any
 
 # For 0.8.8
 #transformers:
