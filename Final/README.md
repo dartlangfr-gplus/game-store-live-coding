@@ -179,4 +179,28 @@ Step 3 - Filter and sort on games list
 
         @observable String search = "";
         
-        filterSearch(String search) => (List list) => list.where((e) => e.contains(search));
+        filterSearch(String search) => (List games) => games.where((e) => e.contains(search));
+- In `games.html`, add sort buttons and add the filter  
+   _`Template / Snippet / Uncomment`_
+
+        <section class="pull-right">
+            <button class="btn btn-info" on-click="{{sort}}" data-field="name">Sort by title</button>
+            <button class="btn btn-info" on-click="{{sort}}" data-field="rating">Sort by rating</button>
+        </section>
+    
+        <template repeat="{{game in games | filterSearch(search) | sortBy(sortField, sortAscending)}}">
+
+- In `games.dart`, add the `sort` handler and the filter function  
+   _`Snippet`_
+
+        sort(Event e, var detail, Element target) {
+          var field = target.dataset['field'];
+          sortAscending = field == sortField ? !sortAscending : true;
+          sortField = field;
+        }
+      
+        sortBy(String field, bool ascending) => (Iterable games) {
+          var list = games.toList()..sort(models.getComparator(field));
+          return ascending ? list : list.reversed;
+        };
+        

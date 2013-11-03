@@ -16,6 +16,13 @@ class Game extends Object with Observable {
   String toString() => "Game{name: $name}";
 }
 
+final Map _comparators = {
+  "name": (Game a, Game b) => a.name.compareTo(b.name),                                       
+  "rating": (Game a, Game b) => a.rating.compareTo(b.rating)                                       
+};
+
+getComparator(String field) => _comparators.containsKey(field) ? _comparators[field] : (a, b) => 0;
+
 final List<Game> games = [
   new Game()..name = "Darts"..genre = "Pub game"..description = 'Darts is ...'..image = "darts.jpg"..rating = 5,                    
   new Game()..name = "Chess"..genre = "Board game"..description = 'Chess is ...'..image = "chess.jpg"..rating = 4,                    
