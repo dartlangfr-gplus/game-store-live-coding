@@ -21,7 +21,7 @@
     
     <!-- Main part -->
     <section class="container">
-    	<!-- Game model -->
+        <!-- Game template -->
         <h3>Game</h3>
 
         <div class="game" id="game">
@@ -34,9 +34,9 @@
             </div>
         </div>
 
-		<hr/>
+		    <hr/>
 
-    	<!-- Games model -->
+        <!-- Games template -->
         <h3>Games</h3>
 
 		    <section class="well form-inline">
@@ -98,6 +98,37 @@
                 </div>
             </div>
         </div>
+
+        <hr/>
+
+        <!-- Game edit template -->
+        <h3>Game edit</h3>
+
+		    <form class="form-horizontal">
+		        <div class="control-group">
+		            <label class="control-label">Name: </label>
+		            <input type="text" value="DARTS">
+		        </div>
+		        <div class="control-group">
+		            <label class="control-label">Genre: </label>
+		            <input type="text" value="Pub game">
+		        </div>
+		        <div class="control-group">
+		            <label class="control-label">Description: </label>
+		            <textarea>Dart is ...</textarea>
+		        </div>
+		        <div class="control-group">
+		            <label class="control-label">Rating: </label>
+		            <input type="number" value="3" placeholder="from 1 to 5" min="1" max="5">
+		        </div>
+		        <footer class="form-actions">
+		            <a href="#/games" class="btn btn-danger btn-small">Cancel</a>
+		            <a href="#/games" class="btn btn-success">Save</a>
+		        </footer>
+		    </form>
+
+        <hr/>
+
     </section>
 
 </body>

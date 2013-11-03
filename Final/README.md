@@ -131,6 +131,8 @@ Step 2 - Show games list
 
         <polymer-element name="x-games">
           <template>
+            <h3>Games</h3>
+
             <template repeat="{{game in games}}">
               <div class="games">
                 <x-game game="{{game}}"></x-game>
@@ -225,3 +227,19 @@ Step 4 - Alternative template
         
         compact(Event e, var detail, Element target) => isCompact = !isCompact;  
         
+Step 5 - Edit game
+------
+- Create a new component `game-edit.html` / `game-edit.dart`  
+   _**`Project skeleton` except for the bindings**_
+- In `index.html`, add the new component
+
+        <link rel="import" href="game-edit.html">
+    
+        <x-game-edit></x-game-edit>
+
+- In `game-edit.html`, add the bindings
+- In `game-edit.dart`, add the `game` attribute and add the `asInt` transformer
+
+        @observable Game game = gameStoreService.getById(1);
+
+        var asInt = new GenericTransformer((int v) => v.toString(), (String t) => int.parse(t));

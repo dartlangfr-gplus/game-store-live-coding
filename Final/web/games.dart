@@ -5,16 +5,16 @@ import 'services.dart';
 
 @CustomTag('x-games')
 class XGames extends PolymerElement {
+  // Whether styles from the document apply to the contents of the component
+  bool get applyAuthorStyles => true;
+  XGames.created() : super.created();
+
   @observable List<Game> games = gameStoreService.getAll();
   @observable String search = "";
   @observable String sortField = "";
   @observable bool sortAscending = true;
   @observable bool isCompact = true;
 
-  XGames.created() : super.created();
-
-  bool get applyAuthorStyles => true;
-  
   String stars(int count) => new List.generate(count, (i) => "★").join("");
   
   filterSearch(String search) => (Iterable games) => games.where((e) => e.contains(search));

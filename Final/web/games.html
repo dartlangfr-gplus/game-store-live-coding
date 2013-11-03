@@ -4,6 +4,8 @@
 
 <polymer-element name="x-games">
 	<template>
+    <h3>Games</h3>
+
 		<section class="well form-inline">
 		    <input type="text" placeholder="Search" value="{{search}}" class="span5">
 		    <section class="pull-right">
@@ -12,6 +14,7 @@
 		        <button class="btn btn-info" on-click="{{sort}}" data-field="rating">Sort by rating</button>
 		    </section>
 		</section>
+
 		<template if="{{!isCompact}}">
 		  <div class="games">
 			  <template repeat="{{game in games | filterSearch(search) | sortBy(sortField, sortAscending)}}">
@@ -19,6 +22,7 @@
 			  </template>
 		  </div>
 	  </template>
+
     <template if="{{isCompact}}">
 	    <table class="table table-striped">
 			    <thead>

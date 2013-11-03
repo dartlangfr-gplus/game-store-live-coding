@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/app.css">
 
     <link rel="import" href="games.html">
+    <link rel="import" href="game-edit.html">
     
     <script type="application/dart">import 'package:polymer/init.dart';</script>
     <script src="packages/browser/dart.js"></script>
@@ -26,9 +27,7 @@
     
     <!-- Main part -->
     <section class="container">
-    	<!-- Games model -->
-      <h3>Games</h3>
-
+      <x-game-edit></x-game-edit>
       <x-games></x-games>
     </section>
 

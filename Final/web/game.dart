@@ -4,11 +4,11 @@ import 'models.dart';
 
 @CustomTag('x-game')
 class XGame extends PolymerElement {
-  @published Game game;
-  
+  // Whether styles from the document apply to the contents of the component
+  bool get applyAuthorStyles => true;
   XGame.created() : super.created();
 
-  bool get applyAuthorStyles => true;
+  @published Game game;
   
   String upperCase(String value) => value.toUpperCase();
   String stars(int count) => new List.generate(count, (i) => "★").join("");
