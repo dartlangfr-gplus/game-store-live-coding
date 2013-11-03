@@ -87,22 +87,6 @@ Step 1 Bis - Show game data (Polymer)
 - Add the new web component
 
         <x-game></x-game>
-- In `game.dart`, add a `Game` class and `Game` instances  
-   _**`Project skeleton`**_
-
-        class Game extends Object with Observable {
-          @observable String name;
-          @observable String genre;
-          @observable String description;
-          @observable String image;
-          @observable int rating;
-          
-          bool contains(String search) {
-            var pattern = new RegExp(search, caseSensitive: false);
-            return name.contains(pattern) || genre.contains(pattern) || description.contains(pattern);
-          }
-          String toString() => "Game{name: $name}";
-        }
 - In `game.html`, add the game template  
    _**`Project skeleton`**` with binding to complete`_
 
@@ -117,7 +101,7 @@ Step 1 Bis - Show game data (Polymer)
          </div>
 - In `game.dart`, add a `game` attribute with a `Game` instance  
 
-        @observable Game game = models.games[0];
+        @observable Game game = gameStoreService.getById(1);
 - In `game.dart`, add filter and use them  
    _`Snippet`_
 
@@ -157,7 +141,7 @@ Step 2 - Show games list
         </polymer-element>
 - In `games.dart`, add the `games` attributes with models instances
 
-        @observable Iterable games = models.games;
+        @observable List<Game> games = gameStoreService.getAll();
 - In `game.dart`, `@published` the game attribute
 
         @published Game game;
@@ -197,7 +181,7 @@ Step 3 - Filter and sort on games list
         }
       
         sortBy(String field, bool ascending) => (Iterable games) {
-          var list = games.toList()..sort(models.getComparator(field));
+          var list = games.toList()..sort(Game.getComparator(field));
           return ascending ? list : list.reversed;
         };
 

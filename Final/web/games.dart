@@ -1,10 +1,11 @@
 import 'dart:html';
 import 'package:polymer/polymer.dart';
-import 'models.dart' as models;
+import 'models.dart';
+import 'services.dart';
 
 @CustomTag('x-games')
 class XGames extends PolymerElement {
-  @observable Iterable games = models.games;
+  @observable List<Game> games = gameStoreService.getAll();
   @observable String search = "";
   @observable String sortField = "";
   @observable bool sortAscending = true;
@@ -25,7 +26,7 @@ class XGames extends PolymerElement {
   }
 
   sortBy(String field, bool ascending) => (Iterable games) {
-    var list = games.toList()..sort(models.getComparator(field));
+    var list = games.toList()..sort(Game.getComparator(field));
     return ascending ? list : list.reversed;
   };
 
