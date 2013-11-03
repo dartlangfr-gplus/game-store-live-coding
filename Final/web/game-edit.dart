@@ -8,12 +8,15 @@ import 'utils.dart';
 class XGameEdit extends PolymerElement {
   // Whether styles from the document apply to the contents of the component
   bool get applyAuthorStyles => true;
-  XGameEdit.created() : super.created();
+  XGameEdit.created() : super.created() {
+    onPropertyChange(this, #gameId, () => game = gameStoreService.getById(gameId));
+  }
 
-  @observable Game game = gameStoreService.getById(1);
+  @published int gameId;
+  @observable Game game;
   
   var asInt = new GenericTransformer((int v) => v.toString(), (String t) => int.parse(t));
   
+  // For later
   save(Event e, var detail, Element target) => gameStoreService.save(game);
 }
-

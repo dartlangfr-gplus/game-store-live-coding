@@ -235,11 +235,17 @@ Step 5 - Edit game
 
         <link rel="import" href="game-edit.html">
     
-        <x-game-edit></x-game-edit>
+        <x-game-edit gameId="1"></x-game-edit>
 
 - In `game-edit.html`, add the bindings
-- In `game-edit.dart`, add the `game` attribute and add the `asInt` transformer
+- In `game-edit.dart`, add the `game` and `gameId` attributes, add the `onPropertyChange` and add the `asInt` transformer  
+   _**`Project skeleton`**` for asInt and Snippet for onPropertyChange`_
 
-        @observable Game game = gameStoreService.getById(1);
+        XGameEdit.created() : super.created() {
+          onPropertyChange(this, #gameId, () => game = gameStoreService.getById(gameId));
+        }
+
+        @published int gameId;
+        @observable Game game;
 
         var asInt = new GenericTransformer((int v) => v.toString(), (String t) => int.parse(t));

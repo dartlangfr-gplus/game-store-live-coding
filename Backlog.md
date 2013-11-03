@@ -8,8 +8,8 @@ _Live-coding Polymer.dart, pour une appli de gestion de jeux_
 - Filtre / Tri sur la liste de jeux
 - Créer un template alternatif dans la liste de jeux plus compact et faire un bouton pour switcher
 - Ajout / Edition d’un jeu (two-way binding)
-- Modifier le service de CRUD sur les jeux (in-memory) et brancher sur les vues
 - Routage URL client entre liste et édition (SPA)
+- Modifier le service de CRUD sur les jeux (in-memory) et brancher sur les vues
 - Injection de dépendances ?
 - Faire des requête REST pour récupérer les jeux (à faire) et les enregistrer (pré-créée ?) sur des bouchons JSON
 - Brancher sur un serveur existant
