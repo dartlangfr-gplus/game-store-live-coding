@@ -72,19 +72,19 @@ Step 1 Bis - Show game data (Polymer)
 
         @CustomTag('x-game')
         class XGame extends PolymerElement {
-          XGame.created() : super.created();
-
           // Whether styles from the document apply to the contents of the component
           bool get applyAuthorStyles => true;
+          XGame.created() : super.created();
         }
 - In `index.html`, remove index.dart script tag and add  
-   _**`Project skeleton`**` for the script tags only`_
+   _**`Project skeleton`**_
 
-        <link rel="import" href="game.html">
-        
         <script type="application/dart">import 'package:polymer/init.dart';</script>
         <script src="packages/browser/dart.js"></script>
-- Add the new web component
+- Add the new web component  
+   _`Snippet link`_
+
+        <link rel="import" href="game.html">
 
         <x-game></x-game>
 - In `game.html`, add the game template  
@@ -103,7 +103,7 @@ Step 1 Bis - Show game data (Polymer)
 
         @observable Game game = gameStoreService.getById(1);
 - In `game.dart`, add filter and use them  
-   _`Snippet`_
+   _`Snippet for stars`_
 
           String upperCase(String value) => value.toUpperCase();
           String stars(int count) => new List.generate(count, (i) => "★").join("");
@@ -125,6 +125,21 @@ Step 2 - Show games list
         <link rel="import" href="games.html">
         
         <x-games></x-games>
+- In `games.html`, use a repeat template and show game names
+
+        <polymer-element name="x-games">
+          <template>
+            <h3>Games</h3>
+
+            <template repeat="{{game in games}}">
+              {{game.name}}<br/>
+            </template>
+          </template>
+          <script type="application/dart" src="games.dart"></script>
+        </polymer-element>
+- In `games.dart`, add the `games` attributes with models instances
+
+        @observable List<Game> games = gameStoreService.getAll();
 - In `games.html`, import the `x-game` component and use it
 
         <link rel="import" href="game.html">
@@ -141,9 +156,6 @@ Step 2 - Show games list
           </template>
           <script type="application/dart" src="games.dart"></script>
         </polymer-element>
-- In `games.dart`, add the `games` attributes with models instances
-
-        @observable List<Game> games = gameStoreService.getAll();
 - In `game.dart`, `@published` the game attribute
 
         @published Game game;
@@ -174,7 +186,7 @@ Step 3 - Filter and sort on games list
         <template repeat="{{game in games | filterSearch(search) | sortBy(sortField, sortAscending)}}">
 
 - In `games.dart`, add the `sort` handler and the filter function  
-   _`Snippet`_
+   _**`Skeleton project`**` except for the target.dataset['field'] to implement`_
 
         sort(Event e, var detail, Element target) {
           var field = target.dataset['field'];
@@ -190,7 +202,7 @@ Step 3 - Filter and sort on games list
 Step 4 - Alternative template
 ------
 - In `games.html`, create and test the alternative template (copy `stars` method)
-   _**`Project skeleton ?`**` / Snippet`_
+   _**`Project skeleton ?`**` / Snippet / Uncomment ?`_
 
         <table class="table table-striped">
             <thead>
@@ -211,7 +223,7 @@ Step 4 - Alternative template
             </tbody>
         </table> 
 - In `games.html`, add a switch button and add the switch templates  
-   _`Snippet the class binding`_
+   _`Snippet the class binding / Uncomment ?`_
 
         <button class="btn btn-success" on-click="{{compact}}"><i class="{{ {'icon-th-list icon-white' : !isCompact , 'icon-th icon-white' : isCompact } }}"></i></button>
 
@@ -222,6 +234,7 @@ Step 4 - Alternative template
            ...
         </template>
 - In `games.dart`, add the `isCompact` attribute and the `compact` handler  
+   _**`Project skeleton ?`**` / Snippet / Uncomment ?`_
 
         @observable bool isCompact = true;
         
@@ -238,8 +251,14 @@ Step 5 - Edit game
         <x-game-edit gameId="1"></x-game-edit>
 
 - In `game-edit.html`, add the bindings
-- In `game-edit.dart`, add the `game` and `gameId` attributes, add the `onPropertyChange` and add the `asInt` transformer  
-   _**`Project skeleton`**` for asInt and Snippet for onPropertyChange`_
+- In `game-edit.dart`, add a `Game` instance and add the `asInt` transforme
+   _`Snippet for asInt with parameters to complete`_
+
+        @observable Game game = gameStoreService.getById(1);
+        
+        var asInt = new GenericTransformer((int v) => v.toString(), int.parse);
+- In `game-edit.dart`, add the `gameId` attribute and add the `onPropertyChange`  
+   _`Snippet for onPropertyChange with parameters to complete`_
 
         XGameEdit.created() : super.created() {
           onPropertyChange(this, #gameId, () => game = gameStoreService.getById(gameId));
@@ -248,7 +267,6 @@ Step 5 - Edit game
         @published int gameId;
         @observable Game game;
 
-        var asInt = new GenericTransformer((int v) => v.toString(), (String t) => int.parse(t));
 
 Step 6 - Single page app, URL routing
 ------

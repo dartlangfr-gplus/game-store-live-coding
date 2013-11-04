@@ -9,4 +9,5 @@ pubspec.lock
 *.js.map
 
 .project
+.settings
 .buildlog

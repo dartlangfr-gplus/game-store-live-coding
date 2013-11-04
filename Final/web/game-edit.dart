@@ -15,7 +15,7 @@ class XGameEdit extends PolymerElement {
   @published int gameId;
   @observable Game game;
   
-  var asInt = new GenericTransformer((int v) => v.toString(), (String t) => int.parse(t));
+  var asInt = new GenericTransformer((int v) => v.toString(), int.parse);
   
   // For later
   save(Event e, var detail, Element target) => gameStoreService.save(game);
