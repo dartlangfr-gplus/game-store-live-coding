@@ -9,6 +9,7 @@ class XRoute extends PolymerElement {
     var router = new Router()
       ..addHandler(gamesUrl, _routeHandler(gamesUrl))
       ..addHandler(gameUrl, _routeHandler(gameUrl))
+      ..addHandler(newGameUrl, _routeHandler(newGameUrl))
       ..listen();
     
     route = new Route(gamesUrl);
@@ -16,6 +17,7 @@ class XRoute extends PolymerElement {
   
   final gamesUrl = new UrlPattern(r'/(.*)#/games');
   final gameUrl = new UrlPattern(r'/(.*)#/games/(\d+)');
+  final newGameUrl = new UrlPattern(r'/(.*)#/games/new');
 
   @observable Route route;
 

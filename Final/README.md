@@ -240,7 +240,7 @@ Step 4 - Alternative template
         
         compact(Event e, var detail, Element target) => isCompact = !isCompact;  
         
-Step 5 - Edit game
+Step 5 - Add / Edit game
 ------
 - Create a new component `game-edit.html` / `game-edit.dart`  
    _**`Project skeleton` except for the bindings**_
@@ -261,12 +261,16 @@ Step 5 - Edit game
    _`Snippet for onPropertyChange with parameters to complete`_
 
         XGameEdit.created() : super.created() {
-          onPropertyChange(this, #gameId, () => game = gameStoreService.getById(gameId));
+          onPropertyChange(this, #gameId, loadGame);
         }
 
-        @published int gameId;
-        @observable Game game;
+        @published int gameId = null;
+        @observable Game game = new Game();
+        
+        loadGame() => game = gameId == null? new Game() : gameStoreService.getById(gameId);
+-  Add a `save` event
 
+        save(Event e, var detail, Element target) => gameStoreService.save(game);
 
 Step 6 - Single page app, URL routing
 ------
@@ -282,6 +286,9 @@ Step 6 - Single page app, URL routing
         <template if="{{currentUrl == gamesUrl}}">
           <x-games></x-games>
         </template>
-        <template if="{{currentUrl == gameUrl}}">
+        <template if="{{currentUrl == gameUrl || route.url == newGameUrl}}">
           <x-game-edit gameId="{{params[1] | asInt}}"></x-game-edit>
         </template>
+
+Step 7 - Delete game
+------

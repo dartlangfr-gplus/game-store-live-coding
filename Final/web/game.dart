@@ -1,6 +1,7 @@
 import 'dart:html';
 import 'package:polymer/polymer.dart';
 import 'models.dart';
+import 'services.dart';
 
 @CustomTag('x-game')
 class XGame extends PolymerElement {
@@ -14,4 +15,6 @@ class XGame extends PolymerElement {
   String stars(int count) => new List.generate(count, (i) => "★").join("");
   
   increaseRating(Event e, var detail, Node target) => game.rating++;
+  
+  delete(Event e, var detail, Element target) => gameStoreService.delete(game.id);
 }

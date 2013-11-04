@@ -18,11 +18,12 @@ class GameStoreService {
   Game getById(int id) => games[id];
   Game save(Game game) {
     if(game.id == null) {
-      game.id = games.values.map((g) => g.id).fold(0, max);
+      game.id = games.values.map((g) => g.id).fold(0, max) + 1;
     }
     games[game.id] = game;
     return game;
   }
+  delete(int gameId) => games.remove(gameId);
 }
 
 final GameStoreService gameStoreService = new GameStoreService();

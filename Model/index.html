@@ -22,7 +22,7 @@
     <!-- Main part -->
     <section class="container">
         <!-- Game template -->
-        <h3>Game</h3>
+        <h1>Game</h1>
 
         <div class="game" id="game">
             <img id="image" src="img/games/darts.jpg" alt="Game picture" class="span2">
@@ -37,34 +37,38 @@
             </div>
         </div>
 
-		    <hr/>
+		<hr />
 
-        <!-- Games template -->
-        <h3>Games</h3>
+		<!-- Games template -->
+		<header class="page-header">
+		    <h1>Game store <small>3 games</small>
+		        <a href="#/games/new" class="btn btn-primary">Add a game</a>
+		    </h1>
+		</header>
 
-		    <section class="well form-inline">
-		        <input type="text" placeholder="Search" class="span5">
-		        <section class="pull-right">
-		            <button class="btn btn-success"><i class="icon-th-list icon-white"></i></button>
-		            <button class="btn btn-info">Sort by name</button>
-		            <button class="btn btn-info">Sort by rating</button>
-		        </section>
-		    </section>
+		<section class="well form-inline">
+			<input type="text" placeholder="Search" class="span5">
+			<section class="pull-right">
+				<button class="btn btn-success"><i class="icon-th-list icon-white"></i></button>
+				<button class="btn btn-info">Sort by name</button>
+				<button class="btn btn-info">Sort by rating</button>
+			</section>
+		</section>
 
-	      <table class="table table-striped">
-	          <thead>
-	          <tr>
-	              <th>Name</th>
-	              <th>Genre</th>
-	              <th>Rating</th>
-	          </tr>
-	          </thead>
-	          <tbody>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Genre</th>
+					<th>Rating</th>
+				</tr>
+			</thead>
+			<tbody>
                 <tr><td>Chess</td><td>Board game</td><td>&#9733;&#9733;</td></tr>
                 <tr><td>Darts</td><td>Pub game</td><td>&#9733;&#9733;&#9733;</td></tr>
                 <tr><td>Dices</td><td>Random game</td><td>&#9733;&#9733;&#9733;&#9733;</td></tr>
-	          </tbody>
-	      </table>
+          	</tbody>
+      	</table>
 
         <div class="games">
             <div class="game">
@@ -108,30 +112,32 @@
         <hr/>
 
         <!-- Game edit template -->
-        <h3>Game edit</h3>
+		<header class="page-header">
+	        <h1>Game edit</h1>
+        </header>
 
-		    <form class="form-horizontal">
-		        <div class="control-group">
-		            <label class="control-label">Name: </label>
-		            <input type="text" value="DARTS">
-		        </div>
-		        <div class="control-group">
-		            <label class="control-label">Genre: </label>
-		            <input type="text" value="Pub game">
-		        </div>
-		        <div class="control-group">
-		            <label class="control-label">Description: </label>
-		            <textarea>Dart is ...</textarea>
-		        </div>
-		        <div class="control-group">
-		            <label class="control-label">Rating: </label>
-		            <input type="number" value="3" placeholder="from 1 to 5" min="1" max="5">
-		        </div>
-		        <footer class="form-actions">
-		            <a href="#/games" class="btn btn-danger btn-small">Cancel</a>
-		            <a href="#/games" class="btn btn-success">Save</a>
-		        </footer>
-		    </form>
+	    <form class="form-horizontal">
+	        <div class="control-group">
+	            <label class="control-label">Name: </label>
+	            <input type="text" value="DARTS">
+	        </div>
+	        <div class="control-group">
+	            <label class="control-label">Genre: </label>
+	            <input type="text" value="Pub game">
+	        </div>
+	        <div class="control-group">
+	            <label class="control-label">Description: </label>
+	            <textarea>Dart is ...</textarea>
+	        </div>
+	        <div class="control-group">
+	            <label class="control-label">Rating: </label>
+	            <input type="number" value="3" placeholder="from 1 to 5" min="1" max="5">
+	        </div>
+	        <footer class="form-actions">
+	            <a href="#/games" class="btn btn-danger btn-small">Cancel</a>
+	            <a href="#/games" class="btn btn-success">Save</a>
+	        </footer>
+	    </form>
 
         <hr/>
 
