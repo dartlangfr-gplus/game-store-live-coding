@@ -4,8 +4,6 @@ dependencies:
   browser: any
   polymer: any
   route: any
-
-# For 0.8.8
-#transformers:
-#- polymer:
-#    entry_points: web/index.html
+transformers:
+- polymer:
+    entry_points: web/index.html

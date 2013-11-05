@@ -4,26 +4,26 @@ import 'package:polymer/polymer.dart';
 
 class Game extends Object with Observable {
   @observable int id;
-  @observable String name;
-  @observable String genre;
-  @observable String description;
-  @observable String image;
-  @observable int rating;
+  @observable String name = "Game name";
+  @observable String genre = "Game genre";
+  @observable String description = "Game description";
+  @observable String image = "darts.jpg";
+  @observable int rating = 1;
    
+  // Used for DEBUGGING
   String toString() => "Game{id: $id, name: $name}";
 
+  // Used for FILTERING
   bool contains(String search) {
     var pattern = new RegExp(search, caseSensitive: false);
     return name.contains(pattern) || genre.contains(pattern) || description.contains(pattern);
   }
   
-  Game copy() => new Game()..id = id..name = name..genre = genre
-      ..description = description..image = image..rating = rating;
-
+  // Used for SORTING
+  static getComparator(String field) => _comparators.containsKey(field) ? _comparators[field] : (a, b) => 0;
   static final Map _comparators = {
     "name": (Game a, Game b) => a.name.compareTo(b.name),                                       
     "rating": (Game a, Game b) => a.rating.compareTo(b.rating)                                       
   };
-  static getComparator(String field) => _comparators.containsKey(field) ? _comparators[field] : (a, b) => 0;
 }
 

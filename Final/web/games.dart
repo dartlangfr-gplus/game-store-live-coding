@@ -7,9 +7,11 @@ import 'services.dart';
 class XGames extends PolymerElement {
   // Whether styles from the document apply to the contents of the component
   bool get applyAuthorStyles => true;
-  XGames.created() : super.created();
+  XGames.created() : super.created() {
+    loadGames();
+  }
 
-  @observable List<Game> games = gameStoreService.getAll();
+  @observable List<Game> games = [];
   @observable String search = "";
   @observable String sortField = "";
   @observable bool sortAscending = true;
@@ -30,5 +32,11 @@ class XGames extends PolymerElement {
     return ascending ? list : list.reversed;
   };
 
-  compact(Event e, var detail, Element target) => isCompact = !isCompact;  
+  compact(Event e, var detail, Element target) => isCompact = !isCompact;
+  
+  delete(Event e, Game game, Element target) {
+    gameStoreService.delete(game.id);
+    loadGames();
+  }
+  loadGames() => games = gameStoreService.getAll();
 }

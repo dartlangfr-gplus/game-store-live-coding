@@ -240,7 +240,7 @@ Step 4 - Alternative template
         
         compact(Event e, var detail, Element target) => isCompact = !isCompact;  
         
-Step 5 - Add / Edit game
+Step 5 - Edit game
 ------
 - Create a new component `game-edit.html` / `game-edit.dart`  
    _**`Project skeleton` except for the bindings**_
@@ -258,7 +258,7 @@ Step 5 - Add / Edit game
         
         var asInt = new GenericTransformer((int v) => v.toString(), int.parse);
 - In `game-edit.dart`, add the `gameId` attribute and add the `onPropertyChange`  
-   _`Snippet for onPropertyChange with parameters to complete`_
+   _**`Project skeleton ?`**` / Snippet for onPropertyChange with parameters to complete`_
 
         XGameEdit.created() : super.created() {
           onPropertyChange(this, #gameId, loadGame);
@@ -268,9 +268,6 @@ Step 5 - Add / Edit game
         @observable Game game = new Game();
         
         loadGame() => game = gameId == null? new Game() : gameStoreService.getById(gameId);
--  Add a `save` event
-
-        save(Event e, var detail, Element target) => gameStoreService.save(game);
 
 Step 6 - Single page app, URL routing
 ------
@@ -290,5 +287,30 @@ Step 6 - Single page app, URL routing
           <x-game-edit gameId="{{params[1] | asInt}}"></x-game-edit>
         </template>
 
-Step 7 - Delete game
+Step 7 - Add / Delete game
 ------
+- In `route.html`, add a the route to `newGameUrl`
+
+        <template if="{{currentUrl == gameUrl || route.url == newGameUrl}}">
+
+- In `game-edit.dart`, add a `save` event
+
+        save(Event e, var detail, Element target) => gameStoreService.save(game);
+
+- In `game.dart`, add a `delete` event (Doesn't work because ...)
+
+        delete(Event e, var detail, Element target) => gameStoreService.delete(game.id);
+
+- Fire a custom event instead
+
+        delete(Event e, var detail, Element target) => dispatchEvent(new CustomEvent('delete', detail: game));
+
+- In `games.dart` and `games.html`, add a `delete` event
+
+        <x-game game="{{game}}" on-delete="{{delete}}"></x-game>
+  
+        delete(Event e, Game game, Element target) {
+          gameStoreService.delete(game.id);
+          loadGames();
+        }
+        loadGames() => games = gameStoreService.getAll();

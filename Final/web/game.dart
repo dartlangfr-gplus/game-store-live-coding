@@ -16,5 +16,5 @@ class XGame extends PolymerElement {
   
   increaseRating(Event e, var detail, Node target) => game.rating++;
   
-  delete(Event e, var detail, Element target) => gameStoreService.delete(game.id);
+  delete(Event e, var detail, Element target) => dispatchEvent(new CustomEvent('delete', detail: game));
 }
