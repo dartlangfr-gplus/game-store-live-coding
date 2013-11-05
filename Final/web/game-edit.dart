@@ -1,6 +1,6 @@
 import 'dart:html';
 import 'package:polymer/polymer.dart';
-import 'models.dart';
+import 'package:game_store/models.dart';
 import 'services.dart';
 import 'utils.dart';
 
@@ -15,9 +15,11 @@ class XGameEdit extends PolymerElement {
   @published int gameId = null;
   @observable Game game = new Game();
   
-  loadGame() => game = gameId == null? new Game() : gameStoreService.getById(gameId);
+  loadGame() => gameId == null ? 
+        game = new Game() 
+      : gameStoreService.getById(gameId).then((result) => game = result);
   
   var asInt = new GenericTransformer((int v) => v.toString(), int.parse);
   
-  save(Event e, var detail, Element target) => gameStoreService.save(game);
+  save(MouseEvent e, var detail, Element target) => gameStoreService.save(game).then((_) => gotoPath("#/games"));
 }

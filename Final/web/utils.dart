@@ -1,6 +1,9 @@
 library game_store.utils;
 
+import 'dart:async';
+import 'dart:html';
 import 'package:polymer_expressions/filter.dart';
+import 'package:route/client.dart';
 
 typedef V TypedFilter<T, V>(T v);
 
@@ -13,3 +16,5 @@ class GenericTransformer<T, V> extends Transformer<T, V> {
   T forward(V v) => _forward(v);
   V reverse(T t) => _reverse(t);
 }
+
+gotoPath(url) => new Future(() => window.location.assign(url));

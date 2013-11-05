@@ -1,7 +1,8 @@
 library game_store.service;
 
 import 'dart:math';
-import 'models.dart';
+import 'dart:async';
+import 'package:game_store/models.dart';
 
 class GameStoreService {
   final Map<int, Game> games = new Map.fromIterable([
@@ -14,16 +15,16 @@ class GameStoreService {
     new Game()..id = 7..name = "Bingo"..genre = "Boring game"..description = 'Bingo is ..'..image="bingo.jpg"..rating = 1
   ], key: (g) => g.id);
   
-  List<Game> getAll() => games.values.toList();
-  Game getById(int id) => games[id];
-  Game save(Game game) {
+  Future<List<Game>> getAll() => new Future.value(games.values.toList());
+  Future<Game> getById(int id) => new Future.value(games[id]);
+  Future<Game> save(Game game) => new Future(() {
     if(game.id == null) {
       game.id = games.values.map((g) => g.id).fold(0, max) + 1;
     }
     games[game.id] = game;
     return game;
-  }
-  delete(int gameId) => games.remove(gameId);
+  });
+  Future<Game> delete(int gameId) => new Future.value(games.remove(gameId));
 }
 
 final GameStoreService gameStoreService = new GameStoreService();

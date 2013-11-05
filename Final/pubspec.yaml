@@ -4,6 +4,9 @@ dependencies:
   browser: any
   polymer: any
   route: any
+  path: any
+dev_dependencies:
+  unittest: any
 transformers:
 - polymer:
     entry_points: web/index.html

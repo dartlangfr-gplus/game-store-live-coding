@@ -1,6 +1,6 @@
 import 'dart:html';
 import 'package:polymer/polymer.dart';
-import 'models.dart';
+import 'package:game_store/models.dart';
 import 'services.dart';
 
 @CustomTag('x-games')
@@ -34,9 +34,6 @@ class XGames extends PolymerElement {
 
   compact(Event e, var detail, Element target) => isCompact = !isCompact;
   
-  delete(Event e, Game game, Element target) {
-    gameStoreService.delete(game.id);
-    loadGames();
-  }
-  loadGames() => games = gameStoreService.getAll();
+  delete(Event e, Game game, Element target) => gameStoreService.delete(game.id).then((_) => loadGames());
+  loadGames() => gameStoreService.getAll().then((result) => games = result);
 }

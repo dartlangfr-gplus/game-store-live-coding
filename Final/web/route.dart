@@ -11,7 +11,7 @@ class XRoute extends PolymerElement {
       ..addHandler(gameUrl, _routeHandler(gameUrl))
       ..addHandler(newGameUrl, _routeHandler(newGameUrl))
       ..listen();
-    
+
     route = new Route(gamesUrl);
   }
   
