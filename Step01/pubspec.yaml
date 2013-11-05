@@ -1,4 +1,0 @@
-name: gamestore_01
-description: A sample application
-dependencies:
-  browser: any
