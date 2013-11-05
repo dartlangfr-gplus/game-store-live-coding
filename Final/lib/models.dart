@@ -1,6 +1,6 @@
 library game_store.model;
 
-import 'package:polymer/polymer.dart';
+import 'package:observe/observe.dart';
 
 class Game extends Object with Observable {
   @observable int id;
@@ -24,6 +24,23 @@ class Game extends Object with Observable {
   static final Map _comparators = {
     "name": (Game a, Game b) => a.name.compareTo(b.name),                                       
     "rating": (Game a, Game b) => a.rating.compareTo(b.rating)                                       
+  };
+  
+  // Used for SERIALIZATION
+  static fromMap(Map values) => new Game()
+    ..id = values['id']
+    ..name = values['name']
+    ..genre = values['genre']
+    ..description = values['description']
+    ..image = values['image']
+    ..rating = values['rating'];
+  Map toMap() => {
+    'id': id,
+    'name': name,
+    'genre': genre,
+    'description': description,
+    'image': image,
+    'rating': rating,
   };
 }
 
