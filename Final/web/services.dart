@@ -6,7 +6,7 @@ import 'dart:html';
 import 'dart:math';
 import 'package:game_store/models.dart';
 
-final gameStoreService = new InMemoryGameStoreService();
+final gameStoreService = new RestGameStoreService();
 
 class InMemoryGameStoreService {
   final Map<int, Game> games = new Map.fromIterable([
