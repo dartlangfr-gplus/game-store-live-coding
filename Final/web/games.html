@@ -13,7 +13,7 @@
 		<section class="well form-inline">
 		    <input type="text" placeholder="Search" value="{{search}}" class="span5">
 		    <section class="pull-right">
-		        <button class="btn btn-success" on-click="{{compact}}"><i class="{{ {'icon-th-list icon-white' : !isCompact , 'icon-th icon-white' : isCompact } }}"></i></button>
+		        <button class="btn btn-success" on-click="{{compact}}"><i class="icon-white {{ {'icon-th-list' : !isCompact , 'icon-th' : isCompact } }}"></i></button>
 		        <button class="btn btn-info" on-click="{{sort}}" data-field="name">Sort by name</button>
 		        <button class="btn btn-info" on-click="{{sort}}" data-field="rating">Sort by rating</button>
 		    </section>

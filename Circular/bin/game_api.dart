@@ -6,13 +6,13 @@ import '../lib/models.dart';
 
 class GameStoreService {
   final Map<int, Game> games = new Map.fromIterable([
-    new Game()..id = 1..name = "Darts"..genre = "Pub game"..description = 'Darts is ...'..image = "darts.jpg"..rating = 5,                    
-    new Game()..id = 2..name = "Chess"..genre = "Board game"..description = 'Chess is ...'..image = "chess.jpg"..rating = 4,                    
-    new Game()..id = 3..name = "Dices"..genre = "Random game"..description = 'Dice are ...'..image = "dice.jpg"..rating = 3,                    
-    new Game()..id = 4..name = "Go"..genre = "Board game"..description = 'Go is ...'..image = "go.jpg"..rating = 2,
-    new Game()..id = 5..name = "Poker"..genre = "Card game"..description = 'Poker is ..'..image="poker.jpg"..rating = 4,
-    new Game()..id = 6..name = "Pool"..genre = "Pub game"..description = 'Pool is ..'..image="pool.jpg"..rating = 3,
-    new Game()..id = 7..name = "Bingo"..genre = "Boring game"..description = 'Bingo is ..'..image="bingo.jpg"..rating = 1
+     new Game(1, "Darts", "Pub game", 'Darts is ...', "darts.jpg", 5),                    
+     new Game(2, "Chess", "Board game", 'Chess is ...', "chess.jpg", 4),                    
+     new Game(3, "Dices", "Random game", 'Dice are ...', "dice.jpg", 3),                    
+     new Game(4, "Go", "Board game", 'Go is ...', "go.jpg", 2),
+     new Game(5, "Poker", "Card game", 'Poker is ..', "poker.jpg", 4),
+     new Game(6, "Pool", "Pub game", 'Pool is ..', "pool.jpg", 3),
+     new Game(7, "Bingo", "Boring game", 'Bingo is ..', "bingo.jpg", 1)
   ], key: (g) => g.id);
   
   Future<List<Game>> getAll() => new Future.value(games.values.toList());

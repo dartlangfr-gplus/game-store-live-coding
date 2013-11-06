@@ -3,7 +3,6 @@ library game_store.utils;
 import 'dart:async';
 import 'dart:html';
 import 'package:polymer_expressions/filter.dart';
-import 'package:route/client.dart';
 
 typedef V TypedFilter<T, V>(T v);
 

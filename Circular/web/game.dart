@@ -1,7 +1,6 @@
 import 'dart:html';
 import 'package:polymer/polymer.dart';
 import 'package:game_store/models.dart';
-import 'services.dart';
 
 @CustomTag('x-game')
 class XGame extends PolymerElement {
@@ -9,12 +8,13 @@ class XGame extends PolymerElement {
   bool get applyAuthorStyles => true;
   XGame.created() : super.created();
 
-  @published Game game;
+  // Story 1 - Add a game attribute
   
-  String upperCase(String value) => value.toUpperCase();
-  String stars(int count) => new List.generate(count, (i) => "★").join("");
+  // Story 1 - Add functions to transform string to uppercase and number to stars
+  // TODO: SNIPPET - Story 1 - Stars function
+  //String stars(int count) => new List.generate(count, (i) => "★").join("");
   
-  increaseRating(Event e, var detail, Node target) => game.rating++;
+  // Story 1 - Add an event handler to increase game rating
   
-  delete(Event e, var detail, Element target) => dispatchEvent(new CustomEvent('delete', detail: game));
+  // Story 7 - Add a delete button click handler and fire a custom event
 }

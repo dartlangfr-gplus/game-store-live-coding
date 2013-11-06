@@ -13,10 +13,10 @@ class XGameEdit extends PolymerElement {
   }
 
   @published int gameId = null;
-  @observable Game game = new Game();
+  @observable Game game = new Game.sample();
   
   loadGame() => gameId == null ? 
-        game = new Game() 
+        game = new Game.sample() 
       : gameStoreService.getById(gameId).then((result) => game = result);
   
   var asInt = new GenericTransformer((int v) => v.toString(), int.parse);

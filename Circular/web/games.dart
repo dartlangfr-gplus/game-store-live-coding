@@ -12,17 +12,20 @@ class XGames extends PolymerElement {
   }
 
   @observable List<Game> games = [];
+
+  loadGames() => gameStoreService.getAll().then((result) => games = result);
+
+  // Search task
   @observable String search = "";
+  // Story 3 - Implement the search filter
+
+  // Sort task
   @observable String sortField = "";
   @observable bool sortAscending = true;
-  @observable bool isCompact = false;
-
-  String stars(int count) => new List.generate(count, (i) => "★").join("");
-  
-  filterSearch(String search) => (Iterable games) => games.where((e) => e.contains(search));
 
   sort(Event e, var detail, Element target) {
-    var field = target.dataset['field'];
+    // Story 3 - Retrieve the field from the element
+    var field = null;
     sortAscending = field == sortField ? !sortAscending : true;
     sortField = field;
   }
@@ -32,8 +35,12 @@ class XGames extends PolymerElement {
     return ascending ? list : list.reversed;
   };
 
+  // Alternative template task
+  @observable bool isCompact = false;
   compact(Event e, var detail, Element target) => isCompact = !isCompact;
   
-  delete(Event e, Game game, Element target) => gameStoreService.delete(game.id).then((_) => loadGames());
-  loadGames() => gameStoreService.getAll().then((result) => games = result);
+  // Story 7 - Add a delete custom event handler to delete the game and reload the list 
+
+  // MISC
+  String stars(int count) => new List.generate(count, (i) => "★").join("");
 }
