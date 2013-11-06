@@ -319,10 +319,10 @@ Step 7 - Add / Delete game
 
 Step 8 - Persist using a rest API
 ------
-- In `services.dart`, reimplement with rest calls
+- In `services.dart`, reimplement with rest calls  
    _**`Snippet`**` except for the first one`_
 
-  Future<List<Game>> getAll() => HttpRequest.getString("api/games.json").then(JSON.decode).then((List list) => list.map(Game.fromMap).toList());
-  Future<Game> getById(int id) => HttpRequest.getString("api/games/$id.json").then(JSON.decode).then(Game.fromMap);
-  Future<Game> save(Game game) => HttpRequest.request("api/games.json", method: "PUT", sendData: JSON.encode(game.toMap())).then((r) => JSON.decode(r.response)).then(Game.fromMap);
-  Future<Game> delete(int id) => HttpRequest.request("api/games/$id.json", method: "DELETE").then((r) => JSON.decode(r.response)).then(Game.fromMap);
+        Future<List<Game>> getAll() => HttpRequest.getString("api/games.json").then(JSON.decode).then((List list) => list.map(Game.fromMap).toList());
+        Future<Game> getById(int id) => HttpRequest.getString("api/games/$id.json").then(JSON.decode).then(Game.fromMap);
+        Future<Game> save(Game game) => HttpRequest.request("api/games.json", method: "PUT", sendData: JSON.encode(game.toMap())).then((r) => JSON.decode(r.response)).then(Game.fromMap);
+        Future<Game> delete(int id) => HttpRequest.request("api/games/$id.json", method: "DELETE").then((r) => JSON.decode(r.response)).then(Game.fromMap);
