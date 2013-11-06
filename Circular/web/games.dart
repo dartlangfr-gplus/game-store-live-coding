@@ -32,7 +32,7 @@ class XGames extends PolymerElement {
 
   sortBy(String field, bool ascending) => (Iterable games) {
     // Story 3 - Sort the list by the given field 
-    var list = [];
+    List<Game> list = [];
     return ascending ? list : list.reversed;
   };
 
@@ -40,7 +40,8 @@ class XGames extends PolymerElement {
   @observable bool isCompact = false;
   compact(Event e, var detail, Element target) => isCompact = !isCompact;
   
-  // Story 7 - Add a delete custom event handler to delete the game and reload the list 
+  // Delete custom event handler to delete the game and reload the list 
+  delete(Event e, Game game, Element target) => gameStoreService.delete(game.id).then((_) => loadGames());
 
   // MISC
   String stars(int count) => new List.generate(count, (i) => "★").join("");
