@@ -1,7 +1,6 @@
 import 'dart:html';
 import 'package:polymer/polymer.dart';
 import 'package:game_store/models.dart';
-import 'services.dart';
 
 @CustomTag('x-game')
 class XGame extends PolymerElement {

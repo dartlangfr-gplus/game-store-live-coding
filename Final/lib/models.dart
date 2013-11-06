@@ -4,11 +4,15 @@ import 'package:observe/observe.dart';
 
 class Game extends Object with Observable {
   @observable int id;
-  @observable String name = "Game name";
-  @observable String genre = "Game genre";
-  @observable String description = "Game description";
-  @observable String image = "darts.jpg";
-  @observable int rating = 1;
+  @observable String name;
+  @observable String genre;
+  @observable String description;
+  @observable String image;
+  @observable int rating;
+  
+  // CONSTRUCTORS
+  Game(this.id, this.name, this.genre, this.description, this.image, this.rating);
+  Game.sample() : this(null, "Game name", "Game genre", "Game description", "darts.jpg", 1);
    
   // Used for DEBUGGING
   String toString() => "Game{id: $id, name: $name}";
@@ -27,20 +31,7 @@ class Game extends Object with Observable {
   };
   
   // Used for SERIALIZATION
-  static fromMap(Map values) => new Game()
-    ..id = values['id']
-    ..name = values['name']
-    ..genre = values['genre']
-    ..description = values['description']
-    ..image = values['image']
-    ..rating = values['rating'];
-  Map toMap() => {
-    'id': id,
-    'name': name,
-    'genre': genre,
-    'description': description,
-    'image': image,
-    'rating': rating,
-  };
+  static fromMap(Map values) => new Game(values['id'], values['name'], values['genre'], values['description'], values['image'], values['rating']);
+  Map toMap() => {'id': id, 'name': name, 'genre': genre, 'description': description, 'image': image, 'rating': rating};
 }
 
