@@ -25,13 +25,14 @@ class XGames extends PolymerElement {
 
   sort(Event e, var detail, Element target) {
     // Story 3 - Retrieve the field from the element
-    var field = null;
+    var field = "";
     sortAscending = field == sortField ? !sortAscending : true;
     sortField = field;
   }
 
   sortBy(String field, bool ascending) => (Iterable games) {
-    var list = games.toList()..sort(Game.getComparator(field));
+    // Story 3 - Sort the list by the given field 
+    var list = [];
     return ascending ? list : list.reversed;
   };
 

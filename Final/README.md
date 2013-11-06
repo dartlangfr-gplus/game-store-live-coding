@@ -265,9 +265,11 @@ Step 5 - Edit game
         }
 
         @published int gameId = null;
-        @observable Game game = new Game();
+        @observable Game game = new Game.sample();
         
-        loadGame() => game = gameId == null? new Game() : gameStoreService.getById(gameId);
+        loadGame() => gameId == null ? 
+              game = new Game.sample() 
+            : gameStoreService.getById(gameId).then((result) => game = result);
 
 Step 6 - Single page app, URL routing
 ------
@@ -283,7 +285,7 @@ Step 6 - Single page app, URL routing
         <template if="{{currentUrl == gamesUrl}}">
           <x-games></x-games>
         </template>
-        <template if="{{currentUrl == gameUrl || route.url == newGameUrl}}">
+        <template if="{{currentUrl == gameUrl}}">
           <x-game-edit gameId="{{params[1] | asInt}}"></x-game-edit>
         </template>
 

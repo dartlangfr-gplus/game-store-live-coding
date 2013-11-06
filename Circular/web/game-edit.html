@@ -9,27 +9,27 @@
     <form class="form-horizontal">
         <div class="control-group">
             <label class="control-label">Name: </label>
-            <input type="text" value="{{game.name}}">
+            <input type="text" value="">
         </div>
         <div class="control-group">
             <label class="control-label">Image: </label>
-            <input type="text" value="{{game.image}}">
+            <input type="text" value="">
         </div>
         <div class="control-group">
             <label class="control-label">Genre: </label>
-            <input type="text" value="{{game.genre}}">
+            <input type="text" value="">
         </div>
         <div class="control-group">
             <label class="control-label">Description: </label>
-            <textarea value="{{game.description}}"></textarea>
+            <textarea></textarea>
         </div>
         <div class="control-group">
             <label class="control-label">Rating: </label>
-            <input type="number" value="{{game.rating | asInt}}" placeholder="from 1 to 5" min="1" max="5">
+            <input type="number" value="" placeholder="from 1 to 5" min="1" max="5">
         </div>
         <footer class="form-actions">
             <a href="#/games" class="btn btn-danger btn-small">Cancel</a>
-            <button on-click="{{save}}" class="btn btn-success">Save</button>
+            <button class="btn btn-success">Save</button>
         </footer>
     </form>
   </template>
