@@ -63,7 +63,7 @@
 #### 7. Ajout / Suppression d'un jeu
 - Ajouter le `on-click` sur le bouton save
 - Ajouter le `on-click` sur le bouton delete et lancer un `CustomEvent`
-- Récupérer l'event dans `games.html` et supprimer le jeu (**Snippet**)
+- Récupérer l'event dans `games.html` et le binder sur la function `delete`
 
 #### 8. Brancher sur un serveur existant 
 - Réimplémenter le service avec des appels Rest (1er + **snippet**)
