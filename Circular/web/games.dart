@@ -44,5 +44,5 @@ class XGames extends PolymerElement {
   delete(Event e, Game game, Element target) => gameStoreService.delete(game.id).then((_) => loadGames());
 
   // MISC
-  String stars(int count) => new List.generate(count, (i) => "★").join("");
+  String stars(int count) => new List.generate(count, (i) => "\u2605").join("");
 }
