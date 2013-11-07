@@ -8,5 +8,5 @@ Application de gestion de jeux
  4. Template alternatif pour la liste des jeux
  5. Édition d’un jeu
  6. Single Page App : Liste / édition
- 7. Ajout / Suppression d'un jeu
+ 7. Sauvegarde / Suppression d'un jeu
  8. Brancher sur un serveur existant 
