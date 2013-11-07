@@ -15,4 +15,5 @@ class XGame extends PolymerElement {
   // Story 1 - Add an event handler to increase game rating
   
   // Story 7 - Add a delete button click handler and fire a custom event
+  // delete(Event e, detail, Element target) => null;
 }
