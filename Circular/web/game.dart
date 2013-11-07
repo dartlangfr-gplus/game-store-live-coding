@@ -11,8 +11,6 @@ class XGame extends PolymerElement {
   // Story 1 - Add a game attribute
   
   // Story 1 - Add functions to transform string to uppercase and number to stars
-  // TODO: SNIPPET - Story 1 - Stars function
-  //String stars(int count) => new List.generate(count, (i) => "★").join("");
   
   // Story 1 - Add an event handler to increase game rating
   
