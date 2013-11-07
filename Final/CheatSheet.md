@@ -48,10 +48,22 @@
 #### 4. Template alternatif pour la liste de jeux
 - Décommenter l'autre template et ajouter le binding (Snippet)
 - Ajouter le `on-click` sur le bouton compact
-- Ajouter les template conditionnel
+- Ajouter les templates conditionnels
 - Ajouter le toggle sur le style du bouton
 
 #### 5. Édition d’un jeu
+- Importer et ajouter le composant **sans `gameId`** dans `index.html`
+- Ajouter **un `gameId`** et faire le chargement du jeu
+- Ajouter le transformer car erreur
+
 #### 6. Single Page App : Liste / édition
+- Importer et ajouter le composant `x-route` dans `index.html`
+- Ajouter les templates conditionnels
+
 #### 7. Ajout / Suppression d'un jeu
+- Ajouter le `on-click` sur le bouton save
+- Ajouter le `on-click` sur le bouton delete et lancer un `CustomEvent`
+- Récupérer l'event dans `games.html` et supprimer le jeu
+
 #### 8. Brancher sur un serveur existant 
+- Réimplémenter le service avec des appels Rest (1er + snippet)
