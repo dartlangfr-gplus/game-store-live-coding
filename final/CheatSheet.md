@@ -2,9 +2,11 @@
 
 ###`eventHandler(Event e, var detail, Element target) => ...;`
 
-###`onPropertyChange(this, #gameId, () => ...;`
+###`onPropertyChange(this, #gameId, () => ...);`
 
 ###`dispatchEvent(new CustomEvent('delete', detail: game));`
+
+### `★` = `\u2605`
 
 ------------------------------------------
 
@@ -23,16 +25,16 @@
 - Créer le projet
 - Copier le modèle
 - Ajouter les scripts dart et `boot.js`
-- Récupérer les éléments (1er + **snippet**)
-- Modifier les éléments (1er + **snippet**)
-- Ajouter un event de click
+- Récupérer leséléments et modifier un style pour ex (1er `game` + **snippet**)
+- Modifier les éléments (1er `name` + **snippet**)
+- Ajouter un event de click sur `rating` + **factorisation de la méthode**
 
 #### 1.bis Afficher les données d’UN jeu (Polymer)
 - Importer et ajouter le composant dans `index.html`
 - Ajouter une instance de jeu dans le composant
 - Binder les champs
 - Ajouter les filtres (**Snippet pour `stars`**)
-- Ajouter l'évenement de click
+- Ajouter l'évenement de click (**`@observable`** !!)
 
 #### 2. Afficher la liste des jeux 
 - Afficher la liste des noms des jeux
