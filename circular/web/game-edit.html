@@ -23,11 +23,11 @@
         </div>
         <div class="control-group">
             <label class="control-label">Rating: </label>
-            <input type="number" value="{{game.rating}}" placeholder="from 1 to 5" min="1" max="5">
+            <input type="number" value="{{game.rating | asInt}}" placeholder="from 1 to 5" min="1" max="5">
         </div>
         <footer class="form-actions">
             <a href="#/games" class="btn btn-danger btn-small">Cancel</a>
-            <button class="btn btn-success">Save</button>
+            <button class="btn btn-success" on-click="{{save}}">Save</button>
         </footer>
     </div>
   </template>

@@ -10,6 +10,7 @@ class XGameEdit extends PolymerElement {
   bool get applyAuthorStyles => true;
   XGameEdit.created() : super.created() {
     // Story 5 - Load the game when gameId attribute change
+    onPropertyChange(this, #gameId, loadGame);
   }
 
   @published int gameId = null;
@@ -20,6 +21,7 @@ class XGameEdit extends PolymerElement {
       : gameStoreService.getById(gameId).then((result) => game = result);
   
   // Story 5 - Instantiate int to string two-way transformer
+  var asInt = new GenericTransformer((int i) => i.toString(), int.parse);
   
   save(MouseEvent e, var detail, Element target) => gameStoreService.save(game).then((_) => gotoPath("#/games"));
 }

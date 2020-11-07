@@ -18,6 +18,7 @@ class XGames extends PolymerElement {
   // Search task
   @observable String search = "";
   // Story 3 - Implement the search filter
+  searchFilter(String search) => (List<Game> games) => games.where((game) => game.contains(search));
 
   // Sort task
   @observable String sortField = "";
@@ -25,14 +26,16 @@ class XGames extends PolymerElement {
 
   sort(Event e, var detail, Element target) {
     // Story 3 - Retrieve the field from the element
-    var field = "";
+    var field = target.dataset["field"];
     sortAscending = field == sortField ? !sortAscending : true;
     sortField = field;
   }
 
   sortBy(String field, bool ascending) => (Iterable games) {
     // Story 3 - Sort the list by the given field 
-    List<Game> list = [];
+    List<Game> list = games.toList();
+    list.sort(Game.getComparator(field));
+    
     return ascending ? list : list.reversed;
   };
 

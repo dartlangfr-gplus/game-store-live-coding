@@ -3,12 +3,12 @@ library game_store.model;
 import 'package:observe/observe.dart';
 
 class Game extends Object with Observable {
-  int id;
-  String name;
-  String genre;
-  String description;
-  String image;
-  int rating;
+  @observable int id;
+  @observable String name;
+  @observable String genre;
+  @observable String description;
+  @observable String image;
+  @observable int rating;
   
   // CONSTRUCTORS
   Game(this.id, this.name, this.genre, this.description, this.image, this.rating);

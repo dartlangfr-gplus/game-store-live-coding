@@ -6,7 +6,7 @@ import 'dart:html';
 import 'dart:math';
 import 'package:game_store/models.dart';
 
-final gameStoreService = new InMemoryGameStoreService();
+final gameStoreService = new RestGameStoreService();
 
 class InMemoryGameStoreService {
   final Map<int, Game> games = new Map.fromIterable([
@@ -32,5 +32,11 @@ class InMemoryGameStoreService {
 }
 
 class RestGameStoreService {
-  Future<Game> getById(int id) => null;
+  Future<Game> getById(int id) => 
+      HttpRequest.getString("/api/games/$id")
+      .then(JSON.decode).then(Game.fromMap);
+  Future<List<Game>> getAll() => HttpRequest.getString("api/games.json").then(JSON.decode).then((List list) => list.map(Game.fromMap).toList());
+  Future<Game> save(Game game) => HttpRequest.request("api/games.json", method: "PUT", sendData: JSON.encode(game.toMap())).then((r) => JSON.decode(r.response)).then(Game.fromMap);
+  Future<Game> delete(int id) => HttpRequest.request("api/games/$id.json", method: "DELETE").then((r) => JSON.decode(r.response)).then(Game.fromMap);
+
 }

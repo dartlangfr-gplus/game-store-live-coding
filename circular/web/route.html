@@ -3,11 +3,11 @@
 
 <polymer-element name="x-route">
   <template>
-	  <template if="{{true}}">
+	  <template if="{{route.url == gamesUrl}}">
 		  <x-games></x-games>
 	  </template>
-	  <template if="{{true}}">
-		  <x-game-edit gameId=""></x-game-edit>
+	  <template if="{{route.url == gameUrl || route.url == newGameUrl}}">
+		  <x-game-edit gameId="{{route[1] | asInt}}"></x-game-edit>
 	  </template>
   </template>
   <script type="application/dart" src="route.dart"></script>
